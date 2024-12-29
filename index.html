@@ -338,6 +338,50 @@
                                 indicazioni per farci arrivare un tuo gentile contributo.</p>
                             <p class="text-uppercase text-dark mb-2">IBAN: IT19R0344001603000000635600</p>
                             <p class="text-dark mb-2">Intestato a: Ballerini Chiara Maria</p>
+                            <button class="btn btn-secondary mt-3 px-4 py-2"
+                                style="align-self: center; font-size: 1rem;" onclick="copyDetails()">
+                                <i class="fa fa-copy"></i> Copia IBAN
+                            </button>
+
+                            <script>
+                                function copyDetails() {
+                                    const textToCopy = `IT19R0344001603000000635600`;
+                                    navigator.clipboard.writeText(textToCopy)
+                                        .then(() => {
+                                            showSuccessBanner();
+                                        })
+                                        .catch(err => {
+                                            console.error('Errore durante la copia: ', err);
+                                        });
+                                }
+
+                                function showSuccessBanner() {
+                                    // Crea un elemento div per il banner
+                                    const banner = document.createElement('div');
+                                    banner.textContent = 'IBAN copiato con successo!';
+                                    banner.style.position = 'fixed';
+                                    banner.style.top = '50%';
+                                    banner.style.left = '50%';
+                                    banner.style.transform = 'translate(-50%, -50%)';
+                                    banner.style.backgroundColor = 'rgba(187, 189, 152, 0.9)';
+                                    banner.style.color = '#000';
+                                    banner.style.padding = '20px 40px';
+                                    banner.style.borderRadius = '8px';
+                                    banner.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+                                    banner.style.zIndex = '1000';
+                                    banner.style.fontSize = '18px';
+                                    banner.style.textAlign = 'center';
+                                    banner.style.fontWeight = 'bold';
+
+                                    // Aggiungi il banner come sovraimpressione
+                                    document.body.appendChild(banner);
+
+                                    // Rimuovi il banner dopo 3 secondi
+                                    setTimeout(() => {
+                                        banner.remove();
+                                    }, 3000);
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
